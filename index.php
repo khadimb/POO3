@@ -20,6 +20,9 @@ echo $car->forward();
 $truck = new Truck(5, 'black', 3, 'fuel', 4);
 echo $truck->isFull();
 
+$car->setHasParkBrake(true); 
+$car->start();
+
 echo $bicycle->forward();
 echo '<br> Vitesse du vélo : ' . $bicycle->getCurrentSpeed() . ' km/h' . '<br>';
 echo $bicycle->brake();
@@ -37,3 +40,5 @@ echo '<br> Vitesse du camion : ' . $truck->getCurrentSpeed() . ' km/h' . '<br>';
 echo $truck->brake();
 echo '<br> Vitesse du camion: ' . $truck->getCurrentSpeed() . ' km/h' . '<br>';
 echo $truck->brake();
+
+

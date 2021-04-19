@@ -7,6 +7,8 @@ class Car extends Vehicle
       'electric',
   ]; 
 
+  private bool $hasParkBrake = true;
+
   private string $energy;
 
   private int $energyLevel;
@@ -17,27 +19,53 @@ class Car extends Vehicle
     $this->energy = $energy;
   }
 
-    public function getEnergy(): string
-    {
-    return $this->energy;  
+  public function start() 
+  {
+    try { if( $this->hasParkBrake === true){
+      throw new Exception ('Oublie du frein main');
     }
+      
+  } catch (Exception $e) {
+      $this->hasParkBrake = false;
+      echo $e . ' Frein à main levé';
 
-    public function setEnergy(string $energy): Car
-  { if (in_array($energy, self::ALLOWED_ENERGIES)) {
-          $this->energy = $energy;
-    }
-    return $this;
+  } finally {
+      echo '<br> Ma voiture roule comme un donut <br>' ;
+  }
   }
 
-    public function getEnergyLevel(): int
-    {
-    return $this->energyLevel;  
-    }
+  public function getHasParkBrake() 
+  {
+    return $this->hasParkBrake; 
+  }
 
-    public function setEnergyLevel(int $energyLevel): void
-    {
-    $this->energyLevel = $energyLevel;
-    }
+  public function setHasParkBrake(bool $hasParkBrake)
+  {
+    $this->hasParkBrake = $hasParkBrake;
+  }
+
+  public function getEnergy(): string
+  {
+  return $this->energy;  
+  }
+
+  public function setEnergy(string $energy): Car
+  { 
+    if (in_array($energy, self::ALLOWED_ENERGIES)) {
+        $this->energy = $energy;
+  }
+  return $this;
+  }
+
+  public function getEnergyLevel(): int
+  {
+  return $this->energyLevel;  
+  }
+
+  public function setEnergyLevel(int $energyLevel): void
+  {
+  $this->energyLevel = $energyLevel;
+  }
 
 }
     
